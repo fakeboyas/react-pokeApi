@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Login from "./Pages/Login/Login";
+import PokemonList from "./Pages/PokemonList/PokemonList";
+import PrivateRoute from "./helpers/ProvateRouting/PrivateRoute";
+import PokemonDetails from './Pages/PokemonsDetail/PokemonsDetails'
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Route exact path to="/">
+            <Login />
+          </Route>
+          <PrivateRoute exact path="/pokemons">
+            <PokemonList />
+          </PrivateRoute>
+          
+          <PrivateRoute exact path="/pokemons/:name">
+            <PokemonDetails />
+          </PrivateRoute>
+
+        </Switch>
+      </Router>
     </div>
   );
 }

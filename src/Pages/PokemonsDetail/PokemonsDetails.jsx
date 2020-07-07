@@ -7,11 +7,10 @@ const Img = styled.img`
   height: 300px;
 `;
 
-const SmallImg =styled.img`
-width:100px;
-height:100px;`
-
-
+const SmallImg = styled.img`
+  width: 100px;
+  height: 100px;
+`;
 
 function PokemonDetails() {
   let { name } = useParams();
@@ -38,9 +37,16 @@ function PokemonDetails() {
           <h1>{pokemon.name}</h1>
           <Img src={pokemon.sprites.front_shiny} alt={pokemon.name} />
           <div>
-          <SmallImg src={pokemon.sprites.front_default} alt={pokemon.name} />
-          <SmallImg src={pokemon.sprites.back_default} alt={pokemon.name} />
-          <SmallImg src={pokemon.sprites.back_shiny} alt={pokemon.name} />
+            <SmallImg src={pokemon.sprites.front_default} alt={pokemon.name} />
+            <SmallImg src={pokemon.sprites.back_default} alt={pokemon.name} />
+            <SmallImg src={pokemon.sprites.back_shiny} alt={pokemon.name} />
+          </div>
+
+          <div>
+            <p>Weight: {pokemon.weight}</p>
+            <p>Base Statitic: {pokemon.base_experience}</p>
+            <p>Moves : {pokemon.moves[0].move.name}</p>
+            <p>Ability: {pokemon.abilities[0].ability.name}</p>
           </div>
         </div>
       )}
